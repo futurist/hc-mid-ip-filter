@@ -10,7 +10,7 @@ npm i -S hc-mid-ip-filter
 
 ### usage
 
-In file `config/config_default.js`
+In file `config/config_production.js`
 
 ```js
 {
