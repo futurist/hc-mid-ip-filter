@@ -33,5 +33,5 @@ In file `config/config_default.js`
 
 ```
 
-The `allow`, `deny` array format please reference [netmask](https://github.com/rs/node-netmask)
+For the `allow`, `deny` array format, please see [netmask](https://github.com/rs/node-netmask)
 
