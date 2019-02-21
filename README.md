@@ -33,5 +33,6 @@ In file `config/config_default.js`
 
 ```
 
-For the `allow`, `deny` array format, please see [netmask](https://github.com/rs/node-netmask)
+For the `allow`, `deny` array format, please see [netmask](https://github.com/rs/node-netmask).
 
+To allow all ips, set `allow` to `['0.0.0.0/0']`.
