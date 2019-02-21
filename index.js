@@ -6,7 +6,6 @@ function ipInRanges(arrMask, ip) {
   return arrMask.indexOf(ip) > -1 ||
     arrMask.some(mask=>new Netmask(mask).contains(ip));
 }
-// console.log(ipInRanges(['10.18', '10.8.8.10'], '10.8.8.10'))
 
 // inside middleware handler
 module.exports = (app, appConfig) => {
