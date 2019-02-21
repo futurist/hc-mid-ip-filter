@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "http-errors": "^1.7.2",
     "is-local-ip": "^1.1.0",
     "netmask": "^1.0.6",
     "request-ip": "^2.1.3"
