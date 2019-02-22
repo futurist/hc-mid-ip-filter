@@ -1,3 +1,4 @@
+require('array-flat-polyfill')
 const proxyaddr = require('proxy-addr')
 const ipRegex = require('ip-regex')({
   includeBoundaries: true
@@ -30,6 +31,7 @@ function filterHeaders(headers) {
 function getIp(req) {
   return proxyaddr.all(req)
     .filter(ip => ipRegex.test(ip))
+    .flatMap(ip => ip.split(/\s+/))  // some ip is `2.2.2.2 3.3.3.3`!!
 }
 
 // inside middleware handler
