@@ -1,6 +1,6 @@
 {
   "name": "hc-mid-ip-filter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "honeycomb hc-bee middleware to filter client ip",
   "main": "index.js",
   "scripts": {
