@@ -1,5 +1,4 @@
-const requestIp = require('request-ip')
-const isLocal = require('is-local-ip')
+const proxyaddr = require('proxy-addr')
 const ipRegex = require('ip-regex')({
   includeBoundaries: true
 })
@@ -18,10 +17,10 @@ function ipInRanges(arrMask, ip) {
  * @param {object} headers req.headers
  * @returns {object} that contains only ip values
  */
-function filterHeaders(headers){
+function filterHeaders(headers) {
   const obj = {}
-  for(let k in headers){
-    if(ipRegex.test(headers[k])){
+  for (let k in headers) {
+    if (ipRegex.test(headers[k])) {
       obj[k] = headers[k]
     }
   }
@@ -29,7 +28,8 @@ function filterHeaders(headers){
 }
 
 function getIp(req) {
-  return String(requestIp.getClientIp(req)).split(/\s+/)
+  return proxyaddr.all(req)
+    .filter(ip => ipRegex.test(ip))
 }
 
 // inside middleware handler
@@ -52,8 +52,8 @@ module.exports = (app, appConfig) => {
         code,
       }, message && {
         message: String(message)
-        .replace(/\$\{ip\}/ig, ips)
-        .replace(/\$\{headers\}/ig, JSON.stringify(ipHeaders))
+          .replace(/\$\{ip\}/ig, ips)
+          .replace(/\$\{headers\}/ig, JSON.stringify(ipHeaders))
       }))
       next(error)
     }
